@@ -20,7 +20,7 @@ const prodConfig = {
       remotes: {
         // We are making a huge assumption here that will be a folder called
         // marketing inside the root of the domain we are deploying to
-        marketing: `marketing@${domain}/marketing/remoteEntry.js`,
+        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
