@@ -13,12 +13,12 @@ const generateClassName = createGenerateClassName({
 
 const App = () => {
   return (
-    <StylesProvider generateClassName={generateClassName}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <StylesProvider generateClassName={generateClassName}>
         <Header />
         <Route exact path="/" component={MarketingApp} />
-      </BrowserRouter>
-    </StylesProvider>
+      </StylesProvider>
+    </BrowserRouter>
   );
 };
 
