@@ -16,7 +16,7 @@ const App = () => {
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
         <Header />
-        <Route exact path="/" component={MarketingApp} />
+        <MarketingApp />
       </StylesProvider>
     </BrowserRouter>
   );
