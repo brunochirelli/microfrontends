@@ -1,6 +1,7 @@
 {
   "name": "bruno-mfe",
   "private": true,
+  "homepage": "https://d4pyf6xw7ou2r.cloudfront.net",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
