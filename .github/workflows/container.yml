@@ -1,38 +1,50 @@
 name: deploy-container
 
-on: 
+on:
   push:
     branches:
       - main
     paths:
       # Only run workflow on changes to the container directory
-      - 'packages/container/**'
+      - "apps/container/**"
 
 defaults:
   run:
     # Define o contexto de execução do workflow
-    working-directory: packages/container
+    working-directory: apps/container
 
 jobs:
-    build:
-      runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22]
 
-      steps:
-        - uses: actions/checkout@v2
-        - run: npm install
-        - run: npm run build
-          env: 
-            PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+    steps:
+      - uses: actions/checkout@v4
 
-        - uses: shinyinc/action-aws-cli@v1.2
-        - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+      - uses: ./.github/actions/setup-pnpm
+
+      - run: pnpm install
+      - run: pnpm run build
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - uses: shinyinc/action-aws-cli@v1.2
+      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
         # Mantenha as env junto aos runs, para não expor as variáveis para todo o workflow
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/container/latest/index.html"
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/container/latest/index.html"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}

@@ -1,0 +1,13 @@
+2024-12-21T21:58:27.841483Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/web/app/page.tsx")}
+2024-12-21T21:58:27.841692Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("web"), path: AnchoredSystemPathBuf("apps/web") }: FileChanged { file: AnchoredSystemPathBuf("apps/web/app/page.tsx") }}))
+2024-12-21T21:58:40.840872Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/web/app/page.tsx")}
+2024-12-21T21:58:40.840920Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("web"), path: AnchoredSystemPathBuf("apps/web") }: FileChanged { file: AnchoredSystemPathBuf("apps/web/app/page.tsx") }}))
+2024-12-21T21:58:48.140180Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/web/app/page.tsx")}
+2024-12-21T21:58:48.140200Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("web"), path: AnchoredSystemPathBuf("apps/web") }: FileChanged { file: AnchoredSystemPathBuf("apps/web/app/page.tsx") }}))
+2024-12-21T21:59:06.740341Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/web/app/page.tsx")}
+2024-12-21T21:59:06.740496Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("web"), path: AnchoredSystemPathBuf("apps/web") }: FileChanged { file: AnchoredSystemPathBuf("apps/web/app/page.tsx") }}))
+2024-12-21T22:07:33.291787Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/container")}
+2024-12-21T22:07:33.293613Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }: FileChanged { file: AnchoredSystemPathBuf("apps/container") }}))
+2024-12-21T22:07:33.295782Z ERROR turborepo_lib::daemon::server: package changes stream closed: channel closed
+2024-12-21T22:07:38.379514Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps/marketing")}
+2024-12-21T22:07:38.379525Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }: FileChanged { file: AnchoredSystemPathBuf("apps/marketing") }}))
