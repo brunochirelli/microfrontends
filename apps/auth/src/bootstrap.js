@@ -4,7 +4,10 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath, onSignIn }) => {
+const mount = (
+  el,
+  { onNavigate, defaultHistory, initialPath, onSignIn, onSignUp },
+) => {
   // defaultHistory is only used in dev mode, so if provided, use it instead of
   // the memory history. This way, we can use the browser history in dev mode
   // and in isolation.
@@ -15,7 +18,10 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, onSignIn }) => {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
+  ReactDOM.render(
+    <App onSignIn={onSignIn} onSignUp={onSignUp} history={history} />,
+    el,
+  );
 
   return {
     onParentNavigate({ pathname: nextPathname }) {

@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -52,6 +53,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn({ onSignIn }) {
   const classes = useStyles();
+
+  const history = useHistory();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -99,7 +102,10 @@ export default function SignIn({ onSignIn }) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSignIn}
+            onClick={() => {
+              onSignIn();
+              history.push("/");
+            }}
           >
             Sign In
           </Button>

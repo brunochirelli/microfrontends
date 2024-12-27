@@ -4,7 +4,7 @@ import { mount } from "auth/AuthApp";
 
 // Você pode usar o mesmo pattern para qualquer outro framework, desde que
 // o framework exponha um elemento (DOM NODE) para ser feito o mount.
-const AuthApp = () => {
+const AuthApp = ({ onSignIn, onSignUp }) => {
   const ref = useRef();
   const history = useHistory();
 
@@ -18,9 +18,8 @@ const AuthApp = () => {
           history.push(nextPathname);
         }
       },
-      onSignIn: () => {
-        console.log("signin");
-      },
+      onSignIn,
+      onSignUp,
     });
 
     history.listen(onParentNavigate);
