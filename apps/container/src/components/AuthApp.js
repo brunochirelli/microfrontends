@@ -18,6 +18,9 @@ const AuthApp = () => {
           history.push(nextPathname);
         }
       },
+      onSignIn: () => {
+        console.log("signin");
+      },
     });
 
     history.listen(onParentNavigate);
