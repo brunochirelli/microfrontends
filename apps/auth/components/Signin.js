@@ -104,7 +104,7 @@ export default function SignIn({ onSignIn }) {
             className={classes.submit}
             onClick={() => {
               onSignIn();
-              history.push("/");
+              history.push("/dashboard");
             }}
           >
             Sign In
